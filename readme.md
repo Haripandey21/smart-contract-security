@@ -2,7 +2,7 @@
 A collection of resources, best practices, and tools for improving the security of smart contracts.
 
 Tools i'm using to analyze any vulnerabilities :-
-- slither + Echinda
+- slither 
 - Securify 
 - mythril 
 
