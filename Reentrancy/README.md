@@ -1,13 +1,13 @@
-# Sample Hardhat Project
+# Reentrancy Attack in Solidity 
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
+Reentrancy attacks occur when an attacker is able to repeatedly call a vulnerable contract's functions before the contract has finished executing a previous call. This can lead to unexpected behavior and security vulnerabilities in smart contracts. 
 
-Try running some of the following tasks:
+```bash 
 
-```shell
-npx hardhat help
-npx hardhat test
-REPORT_GAS=true npx hardhat test
-npx hardhat node
-npx hardhat run scripts/deploy.js
+Reentrancy = Re + enter 
+- calling  a function while the function is still executing.
+```
+# Solution 
+```bash 
+- use ReentrancyGuard from the openzeppelin...
 ```

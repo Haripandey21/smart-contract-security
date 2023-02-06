@@ -12,4 +12,7 @@ contract Wallet {
        payable(msg.sender).transfer(balanceOf[msg.sender]);
         balanceOf[msg.sender] = 0;
     }
+    function checkBalance() external view returns(uint256){
+        return balanceOf[msg.sender];
+    }
 }
