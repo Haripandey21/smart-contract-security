@@ -1,10 +1,10 @@
 const { expect } = require("chai");
 const { ethers } = require("hardhat");
 
-describe("stake contract testing.....", () => {
+describe("Wallet contract testing.....", () => {
   beforeEach(async () => {
     [deployer, user] = await ethers.getSigners();
-    walletContract = await ethers.getContractFactory("Wallet");
+    walletContract = await ethers.getContractFactory("Wallet",deployer);
     deployedWalletContract = await walletContract.deploy();
     await deployedWalletContract.deposit({
       value: ethers.utils.parseEther("10"),
