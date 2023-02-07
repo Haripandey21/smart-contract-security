@@ -9,5 +9,8 @@ Reentrancy = Re + enter
 ```
 # Solution 
 ```bash 
-- use ReentrancyGuard from the openzeppelin...
+1. install openzeppelin : `npm install @openzeppelin/contracts`
+2.import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
+3. inherit in your contract 
+4. add this modifier "nonReentrant" in your function
 ```
