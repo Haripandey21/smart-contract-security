@@ -10,7 +10,7 @@ underflow :- when a number exceeds from its minimum range,it will count from max
 ```
 ```bash 
 if you see function which is manipulating the timestamp or , 
-if you seee any input field for timestamp (in epoch) in etherscan, then you can manipulate the time by making it zero or any time 
+if you see any input field for timestamp (in epoch) in etherscan, then you can manipulate the time by making it zero or any time 
 ```
 Solution 
 ```bash 
