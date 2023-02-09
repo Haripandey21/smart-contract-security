@@ -48,31 +48,49 @@ execution cost :	1736165 gas
 * bankinfo.accountAlreadyExist(uint256) (contracts/BankInfo.sol#40-53) compares to a boolean constant:
         -require(bool,string)(check == false,Account already exists,please Change your Account Number) (contracts/BankInfo.sol#48-51)
 
-*   Contract bankinfo (contracts/BankInfo.sol#4-187) is not in CapWords
+*    Contract bankinfo (contracts/BankInfo.sol#4-187) is not in CapWords
 *    Struct bankinfo.bankaccount (contracts/BankInfo.sol#5-10) is not in CapWords
 *    Struct bankinfo.userdata (contracts/BankInfo.sol#12-17) is not in CapWords
 *    Struct bankinfo.bankdata (contracts/BankInfo.sol#19-23) is not in CapWords
-*    Event bankinfoeventAccountCreation(address,uint256) (contracts/BankInfo.sol#57) is not in CapWords
-*    Event bankinfoeventBalanceDeposit(address,uint256,uint256) (contracts/BankInfo.sol#59-63) is not in     CapWords
-*    Event bankinfoeventBalanceTransfer(uint256,uint256,uint256) (contracts/BankInfo.sol#65-69) is not in CapWords
-*    Event bankinfoeventBalanceWithdraw(address,uint256,uint256) (contracts/BankInfo.sol#71-75) is not in CapWords
+*    Event bankinfoeventAccountCreation(address,uint256) (contracts/BankInfo.sol#57)
+      is not in CapWords
+*    Event bankinfoeventBalanceDeposit(address,uint256,uint256) (contracts/BankInfo.sol#59-63)
+      is not in     CapWords
+*    Event bankinfoeventBalanceTransfer(uint256,uint256,uint256) (contracts/BankInfo.sol#65-69) 
+      is not in CapWords
+*    Event bankinfoeventBalanceWithdraw(address,uint256,uint256) (contracts/BankInfo.sol#71-75)
+      is not in CapWords
 *    Event bankinfoeventAdminChange(address) (contracts/BankInfo.sol#77) is not in CapWords
 
-* Parameter bankinfo.setInfo(uint256,uint256,string,uint256)._accountNumber (contracts/BankInfo.sol#81) is     not  in mixedCase
-*     Parameter bankinfo.setInfo(uint256,uint256,string,uint256)._bank (contracts/BankInfo.sol#82) is not in mixedCase
-*    Parameter bankinfo.setInfo(uint256,uint256,string,uint256)._branch (contracts/BankInfo.sol#83) is not in mixedCase
-*    Parameter bankinfo.setInfo(uint256,uint256,string,uint256)._balance (contracts/BankInfo.sol#84) is not in mixedCase
-*   Parameter bankinfo.deposit(uint256,uint256)._accountNumber (contracts/BankInfo.sol#97) is not in mixedCase
-*    Parameter bankinfo.deposit(uint256,uint256)._depositBalance (contracts/BankInfo.sol#97) is not in mixedCase
-*    Parameter bankinfo.withdraw(uint256,uint256)._accountNumber (contracts/BankInfo.sol#103) is not in mixedCase
-*    Parameter bankinfo.withdraw(uint256,uint256)._withdrawBalance (contracts/BankInfo.sol#103) is not in mixedCase
-*    Parameter bankinfo.getDataOfBank(uint256)._name (contracts/BankInfo.sol#126) is not in mixedCase
-*    Parameter bankinfo.tranferAmount(uint256,uint256,address,uint256)._fromAccountNo (contracts/BankInfo.sol#155) is not in mixedCase
-*    Parameter bankinfo.tranferAmount(uint256,uint256,address,uint256)._transferBalance (contracts/BankInfo.sol#156) is not in mixedCase
-*    Parameter bankinfo.tranferAmount(uint256,uint256,address,uint256)._toAddress (contracts/BankInfo.sol#157) is not in mixedCase
-*    Parameter bankinfo.tranferAmount(uint256,uint256,address,uint256)._toAccountNo (contracts/BankInfo.sol#158) is not in mixedCase
+*   Parameter bankinfo.setInfo(uint256,uint256,string,uint256)._accountNumber (contracts/BankInfo.sol#81)
+     is not  in mixedCase
+*     Parameter bankinfo.setInfo(uint256,uint256,string,uint256)._bank (contracts/BankInfo.sol#82)
+         is not in mixedCase
+*    Parameter bankinfo.setInfo(uint256,uint256,string,uint256)._branch (contracts/BankInfo.sol#83) 
+        is not in mixedCase
+*    Parameter bankinfo.setInfo(uint256,uint256,string,uint256)._balance (contracts/BankInfo.sol#84) 
+        is not in mixedCase
+*   Parameter bankinfo.deposit(uint256,uint256)._accountNumber (contracts/BankInfo.sol#97) 
+        is not in mixedCase
+*    Parameter bankinfo.deposit(uint256,uint256)._depositBalance (contracts/BankInfo.sol#97) 
+        is not in mixedCase
+*    Parameter bankinfo.withdraw(uint256,uint256)._accountNumber (contracts/BankInfo.sol#103)
+        is not in mixedCase
+*    Parameter bankinfo.withdraw(uint256,uint256)._withdrawBalance (contracts/BankInfo.sol#103) 
+        is not in mixedCase
+*    Parameter bankinfo.getDataOfBank(uint256)._name (contracts/BankInfo.sol#126) 
+        is not in mixedCase
+*    Parameter bankinfo.tranferAmount(uint256,uint256,address,uint256)._fromAccountNo
+         (contracts/BankInfo.sol#155) is not in mixedCase
+*    Parameter bankinfo.tranferAmount(uint256,uint256,address,uint256)._transferBalance
+         (contracts/BankInfo.sol#156) is not in mixedCase
+*    Parameter bankinfo.tranferAmount(uint256,uint256,address,uint256)._toAddress 
+        (contracts/BankInfo.sol#157) is not in mixedCase
+*    Parameter bankinfo.tranferAmount(uint256,uint256,address,uint256)._toAccountNo 
+        (contracts/BankInfo.sol#158) is not in mixedCase
 *    Parameter bankinfo.getBalance(uint256)._acno (contracts/BankInfo.sol#175) is not in mixedCase
-*    Parameter bankinfo.transferOwner(address)._newAdminaddr (contracts/BankInfo.sol#179) is not in mixedCase
+*    Parameter bankinfo.transferOwner(address)._newAdminaddr (contracts/BankInfo.sol#179) 
+     is not in mixedCase
 
 
 ```
@@ -83,6 +101,7 @@ execution cost :	1607625 gas
 * Written Contract Name, Structs and Events in Capwords.
 * checked zero address too :
      if(_newAdminAddr!=address(0)){}
+* Removed Loop in modifier whcih was costing much gas fee, so used Bool.
 * Removed comparing  to a boolean constant --->> 
     DO this : modifier accountAlreadyExist(address _address,uint256 _acNumber) {
         require(
@@ -99,11 +118,41 @@ execution cost :	1607625 gas
   
 ```
 ---------------------------------------------------------------------------------------
-# Findings in 
+# Findings in ProposalDao.sol
 ```bash 
+* Contract locking ether found:
+        Contract Token (contracts/ProposalDao.sol#8-80) has payable functions:
+         - Token.mint() (contracts/ProposalDao.sol#37-46)
+        But does not have a function to withdraw the ether
+* Token.registerVoter(uint256).i (contracts/ProposalDao.sol#62) is a 
+    local variable never initialized. 
+* Pragma version>=0.4.22<0.9.0 (contracts/ProposalDao.sol#2) is too complex
+    Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+* Parameter Token.designate(address)._to (contracts/ProposalDao.sol#49) 
+    is not in mixedCase.
+* Parameter Token.registerVoter(uint256)._proposalId (contracts/ProposalDao.sol#61)
+     is not in mixedCase.
+* Parameter Token.getVotes(address)._sender (contracts/ProposalDao.sol#70) 
+    is not in mixedCase.
+* Parameter Token.verifyVoters(address,uint256)._sender (contracts/ProposalDao.sol#75) 
+    is not in mixedCase.
+* Parameter Token.verifyVoters(address,uint256)._proposalId (contracts/ProposalDao.
+    sol#75) is not in mixedCase.
+* Variable Token.max_supply (contracts/ProposalDao.sol#25) is not in mixedCase.
+* Token.mint() uses literals with too many digits:
+        - val = msg.value.div(1000000000) (contracts/ProposalDao.sol#40)
+* Token.max_supply (contracts/ProposalDao.sol#25) should be immutable .
+
 ```
-# Resolved by ()
+# Resolved by (in ProposalDao.sol)
 ```bash 
+* Suggestion : Remove the payable attribute or add a withdraw function. 
+    else Every Ether sent to that func will be lost.
+* initialized uint256 i=0;
+* changed the pragma version to stable ^0.8.16
+* following the standard Naming,All parameters of functions changed to MixedCase. 
+* Changed .div(10000000000) by writing with suffix : .div(10*9)
+* declared maxSupply as immutable. 
 ```
 ---------------------------------------------------------------------------------------
 # Findings in 
