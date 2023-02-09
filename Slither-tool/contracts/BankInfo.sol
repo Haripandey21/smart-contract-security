@@ -123,11 +123,9 @@ contract BankInfo {
         return muserdata;
     }
 
-    function getDataOfBank(uint256 _name)
-        public
-        view
-        returns (bankdata[] memory)
-    {
+    function getDataOfBank(
+        uint256 _name
+    ) public view returns (bankdata[] memory) {
         uint256 count;
         bankdata[] memory mbankdata = new bankdata[](accounts.length); // new array to store struct
 
@@ -184,4 +182,4 @@ contract BankInfo {
         owner = _newAdminaddr;
         emit eventAdminChange(_newAdminaddr);
     }
-} 
+}

@@ -34,7 +34,7 @@ contract BankInfo {
         public mappedBankAccount;
 
     /*----------------------------------modidiers---------------------------------------------*/
-    modifier accountAlreadyExist(address _address,uint256 _acNumber) {
+    modifier accountAlreadyExist(address _address, uint256 _acNumber) {
         require(
             !mappedBankAccount[_address][_acNumber].exists,
             "Account already exists"
@@ -64,13 +64,14 @@ contract BankInfo {
     );
 
     event EventAdminChange(address newAdmin);
+
     /*----------------------------------------functions -------------------------------------------------*/
     function setInfo(
         uint256 _accountNumber,
         uint256 _bank,
         string memory _branch,
         uint256 _balance
-    ) public accountAlreadyExist(msg.sender,_accountNumber) {
+    ) public accountAlreadyExist(msg.sender, _accountNumber) {
         mappedBankAccount[msg.sender][_accountNumber] = BankAccount(
             _bank,
             _branch,
@@ -111,11 +112,9 @@ contract BankInfo {
         return mUserData;
     }
 
-    function getDataOfBank(uint256 _name)
-        public
-        view
-        returns (BankData[] memory)
-    {
+    function getDataOfBank(
+        uint256 _name
+    ) public view returns (BankData[] memory) {
         uint256 count;
         BankData[] memory mBankData = new BankData[](accounts.length); // new array to store struct
 
@@ -165,14 +164,10 @@ contract BankInfo {
     }
 
     function transferOwner(address _newAdminAddr) public {
-        if(_newAdminAddr!=address(0))
-        {
-        require(
-            msg.sender == owner,
-            "You are not owner of this Account"
-        );
-        owner = _newAdminAddr;
-        emit EventAdminChange(_newAdminAddr);
+        if (_newAdminAddr != address(0)) {
+            require(msg.sender == owner, "You are not owner of this Account");
+            owner = _newAdminAddr;
+            emit EventAdminChange(_newAdminAddr);
+        }
     }
-    }
-} 
+}

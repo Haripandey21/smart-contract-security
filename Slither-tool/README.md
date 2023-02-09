@@ -12,6 +12,7 @@ All contracts included in this audit are from various GitHub users' repositories
 
 # Findings in Lottery.sol
 ```bash 
+gas : 525858 gas 
 transaction cost : 	457267 gas 
 execution cost :	376559 gas 
 * Pragma version>=0.7.0<0.9.0 is too complex
@@ -24,6 +25,7 @@ execution cost :	376559 gas
 ```
 # Resolved by ( in Lottery.sol )
 ```bash 
+gas : 441889 gas 
 transaction cost : 384251 gas 
 execution cost	: 308227 gas 
 * pragma solidity ^0.8.16 
@@ -36,6 +38,7 @@ execution cost	: 308227 gas
 ---------------------------------------------------------------------------------------
 # Findings in BankInfo.sol
 ```bash 
+gas	 : 2209363 gas
 transaction cost :	1921197 gas 
 execution cost :	1736165 gas 
 * bankinfo.getDataOfBank(uint256).count (contracts/BankInfo.sol#131) is a local variable never initialized.
@@ -94,8 +97,9 @@ execution cost :	1736165 gas
 
 
 ```
-# Resolved by ()
+# Resolved by (in BankInfo.sol)
 ```bash 
+gas	 : 2049619 gas
 transaction cost : 	1782277 gas 
 execution cost :	1607625 gas  
 * Written Contract Name, Structs and Events in Capwords.
@@ -120,6 +124,9 @@ execution cost :	1607625 gas
 ---------------------------------------------------------------------------------------
 # Findings in ProposalDao.sol
 ```bash 
+gas	: 2011063 gas
+transaction cost : 1748750 gas 
+execution cost	: 1570038 gas 
 * Contract locking ether found:
         Contract Token (contracts/ProposalDao.sol#8-80) has payable functions:
          - Token.mint() (contracts/ProposalDao.sol#37-46)
@@ -146,6 +153,9 @@ execution cost :	1607625 gas
 ```
 # Resolved by (in ProposalDao.sol)
 ```bash 
+gas	2005528 gas
+transaction cost	1743937 gas 
+execution cost	1564397 gas 
 * Suggestion : Remove the payable attribute or add a withdraw function. 
     else Every Ether sent to that func will be lost.
 * initialized uint256 i=0;
