@@ -264,11 +264,44 @@ execution cost: 1157400 gas
 * 
 ```
 ---------------------------------------------------------------------------------------
-# Findings in 
+# Findings in Bloodchain.sol
 ```bash 
+* BloodSupply.owner (contracts/Bloodchain.sol#8) should be immutable 
+* Structs are not in Capwords.
+* Events are ot in Capwords.
+* These Parameters are not in mixedCase :-
+        Parameter BloodSupply.addSupplier(address,string,uint256)._supplier_address
+        Parameter BloodSupply.addSupplier(address,string,uint256)._organization_name  
+        Parameter BloodSupply.addSupplier(address,string,uint256)._phone_number   
+        Parameter BloodSupply.addHospital(address,string,uint256)._hospitalAddress    
+        Parameter BloodSupply.addHospital(address,string,uint256)._hospital_name    
+        Parameter BloodSupply.addHospital(address,string,uint256)._phone_number 
+        Parameter BloodSupply.addBlood(string,uint256,string,string,string,uint256)._donor_name    
+        Parameter BloodSupply.addBlood(string,uint256,string,string,string,uint256)._age        
+        Parameter BloodSupply.addBlood(string,uint256,string,string,string,uint256)._gender 
+        Parameter BloodSupply.addBlood(string,uint256,string,string,string,uint256)._Address 
+        Parameter BloodSupply.addBlood(string,uint256,string,string,string,uint256)._blood_group 
+        Parameter BloodSupply.addBlood(string,uint256,string,string,string,uint256)._blood_volume 
+        Parameter BloodSupply.shipBloodToHospital(uint256,address)._blood_id 
+        Parameter BloodSupply.shipBloodToHospital(uint256,address)._hospital_address 
+        Parameter BloodSupply.giveBloodToPatients(uint256,string,uint256,string,string,uint256)._blood_id 
+        Parameter BloodSupply.giveBloodToPatients(uint256,string,uint256,string,string,uint256)._patient_name
+        Parameter BloodSupply.giveBloodToPatients(uint256,string,uint256,string,string,uint256)._age 
+        Parameter BloodSupply.giveBloodToPatients(uint256,string,uint256,string,string,uint256)._address 
+        Parameter BloodSupply.giveBloodToPatients(uint256,string,uint256,string,string,uint256)._blood_group 
+        Parameter BloodSupply.giveBloodToPatients(uint256,string,uint256,string,string,uint256)._used_time
+        Parameter BloodSupply.getBloodStatus(uint256)._id (contracts/Bloodchain.sol#263) 
+        
+* These Variables are not in mixedCase :         
+        Variable BloodSupply.supplier_id (contracts/Bloodchain.sol#9) 
+        Variable BloodSupply.hospital_id (contracts/Bloodchain.sol#10) 
+        Variable BloodSupply.blood_unique_id (contracts/Bloodchain.sol#14)
 ```
-# Resolved by ()
+# Resolved by (BloodChainResolved.sol)
 ```bash 
+* declared maxSupply as immutable. 
+* Followed all Naming Convenstions except that of func parameters (for reading compatibility).
+
 ```
 
 
