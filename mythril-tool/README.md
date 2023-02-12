@@ -1,13 +1,32 @@
-# Sample Hardhat Project
+# Mythril
+All contracts included in this audit are from various GitHub users' repositories which contains Vulnerabilities.
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
+so, Let's cover what mythril can do.
 
-Try running some of the following tasks:
+To run mythril in your Solidity project, you will need to have the following: 
+- install python in your system 
+- install mythril : `pip3 install mythril`
+- run mythril in contract directory : `$ myth analyze <solidity-file>`
 
-```shell
-npx hardhat help
-npx hardhat test
-REPORT_GAS=true npx hardhat test
-npx hardhat node
-npx hardhat run scripts/deploy.js
+---------------------------------------------------------------------------------------
+# Findings in BankInfo.sol
+```bash 
+X X X X X X X X 
+No any issues found even in such Vulnerable Contract. 
 ```
+---------------------------------------------------------------------------------------
+# Findings in Bounty.sol
+```bash 
+* Detected Reentrancy can happen here :  payable(_receiver).call{value: _amount}("")
+*  State access after external call : 
+    giverDetails[_receiver][msg.sender] = Giver(msg.sender, _amount)
+------------------------------------------------------------------
+not effective like that of slither, no any other issues found here.
+------------------------------------------------------------------
+```
+---------------------------------------------------------------------------------------
+# Findings in Lottery.sol
+```bash 
+No issues were detected.
+```
+------------------------------------------------------------------------------------------

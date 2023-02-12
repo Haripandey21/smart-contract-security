@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.16;
-
-contract Donate {
+import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
+contract Donate is ReentrancyGuard {
     struct Giver {
         address donator;
         uint256 amountDonated;
@@ -45,10 +45,10 @@ contract Donate {
         return balance;
     }
 
-    function sendEthers(
+    function sendEthers (
         address receiverAddress,
         uint256 amount
-    ) public payable {
+    ) public payable nonReentrant {
         //donate ether
         if (receiverAddress != address(0)) {
             amount = msg.value;

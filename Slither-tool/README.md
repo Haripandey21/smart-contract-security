@@ -6,7 +6,7 @@ To run Slither in your Solidity project, you will need to have the following:
 - run Slither : `slither .`
 
 
-All contracts included in this audit are from various GitHub users' repositories.
+All contracts included in this audit are from various GitHub users' repositories which contains Vulnerabilities.
 
 ------------------------------------------------------------------------------
 
@@ -247,7 +247,7 @@ execution cost: 1157400 gas
 * checked zero address too :
      if(_newAdminAddr!=address(0)){}
 
-* Suggestion : Use ReentracyGuard of OpenZeppelin to be save from Reentrancy Attacks.
+* Used ReentracyGuard of OpenZeppelin to be save from Reentrancy Attacks.
 
 * Removed comparing to a boolean constant : 
          require(toCheck, "error");
