@@ -2,10 +2,10 @@
 Slither is a security analysis tool for smart contracts written in Solidity.
 To run Slither in your Solidity project, you will need to have the following: 
 - install python in your system 
-- install Slither : `pip install slither-analyzer`
+- install Slither : `pip3 install slither-analyzer`
 - run Slither : `slither .`
 
---------------------------------------------------------------------------.
+
 All contracts included in this audit are from various GitHub users' repositories.
 
 ------------------------------------------------------------------------------
@@ -28,7 +28,7 @@ execution cost : 376559 gas
 gas : 441889 gas 
 transaction cost : 384251 gas 
 execution cost	: 308227 gas 
-* pragma solidity ^0.8.16 
+* Changed pragma solidity to ^0.8.16 
 * address public immutable manager; 
 * Suggested Method : use Chainlink VRF to generate random number.
 * Used internal function
@@ -60,7 +60,7 @@ execution cost : 1736165 gas
       is not in CapWords
 
 *    Event bankinfoeventBalanceDeposit(address,uint256,uint256) (contracts/BankInfo.sol#59-63)
-      is not in     CapWords
+      is not in CapWords
 
 *    Event bankinfoeventBalanceTransfer(uint256,uint256,uint256) (contracts/BankInfo.sol#65-69) 
       is not in CapWords
@@ -134,9 +134,9 @@ execution cost : 1607625 gas
         );
         _;
     } 
-    --------------------------
+    ------------------------------------------------
     INSTEAD OF : mappedBankAccount[_address][_acNumber].exists==false
-    ----------------------------
+    --------------------------------------------------
 * In this Contract,Functions Arguments are written in `_bankName` format, instead of Standard format 
   like `bankName`.
   

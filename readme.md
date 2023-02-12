@@ -3,7 +3,6 @@ A collection of resources, best practices, and tools for improving the security 
 
 Tools i'm using to analyze any vulnerabilities :-
 - slither 
-- Securify 
 - mythril 
 
 
